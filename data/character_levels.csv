@@ -1,0 +1,6 @@
+﻿character_id,level_min,level_max,sprite_file,costume,emotion_set,special_ability
+emma,1,2,emma_novice.png,基本エプロン,nervous;worried,none
+emma,3,4,emma_learning.png,カフェ帽追加,happy;nervous,time_bonus_2
+emma,5,6,emma_skilled.png,おしゃれエプロン,happy;love,auto_hint
+emma,7,8,emma_veteran.png,プロ仕様制服,happy;determined,combo_bonus_1_5
+emma,9,10,emma_master.png,店長風衣装,love;happy,all_max

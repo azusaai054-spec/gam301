@@ -1,0 +1,5 @@
+﻿screen_size,min_width,max_width,scale_factor,layout_type,font_size_multiplier
+mobile,320,768,0.8,vertical,0.9
+tablet,769,1024,0.9,compact,0.95
+desktop,1025,1920,1.0,standard,1.0
+large,1921,9999,1.1,extended,1.05

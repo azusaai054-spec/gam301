@@ -1,0 +1,7 @@
+﻿animation_id,target_element,animation_type,duration,easing,loop,trigger_event
+button_hover,button,scale,0.2,ease-out,false,mouseover
+number_click,number,bounce,0.3,ease-in-out,false,click
+level_up,character,celebration,1.0,ease-out,false,level_change
+combo_effect,game_board,particle,0.5,linear,false,combo_trigger
+text_typewriter,dialogue,typewriter,0.05,linear,false,text_display
+fade_in,screen,fade,0.5,ease-in,false,scene_change

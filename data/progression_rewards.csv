@@ -1,0 +1,11 @@
+﻿level,reward_type,reward_value,unlock_content,description
+1,none,0,tutorial,基本操作を覚えましょう
+2,time_bonus,2,combo_system,連続成功でボーナス！
+3,menu_item,cappuccino,new_drink,カプチーノが追加されました
+4,efficiency,auto_hint,hint_system,数字の順番をヒント表示
+5,decoration,plant_pot,cafe_decoration,観葉植物で店内を装飾
+6,menu_item,cake,dessert,美味しいケーキが登場
+7,upgrade,faster_service,efficiency_boost,サービス速度アップ
+8,decoration,artwork,wall_decoration,素敵な絵画を店内に
+9,skill,master_technique,advanced_skill,マスターテクニック習得
+10,achievement,cafe_master,final_unlock,カフェマスターの称号

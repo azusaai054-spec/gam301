@@ -1,0 +1,9 @@
+﻿icon_id,image_file,size,tooltip_text,animation_type
+level_icon,icon_level.png,24,現在のレベル,none
+money_icon,icon_money.png,24,所持金,coin_spin
+star_icon,icon_star.png,24,評価スコア,sparkle
+time_icon,icon_clock.png,24,残り時間,tick
+coffee_icon,icon_coffee.png,32,コーヒー,steam
+croissant_icon,icon_croissant.png,32,クロワッサン,none
+cake_icon,icon_cake.png,32,ケーキ,none
+drink_icon,icon_drink.png,32,ドリンク,bubble

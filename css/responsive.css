@@ -1,0 +1,591 @@
+/* Responsive Design for Café Number Rush */
+
+/* Base responsive container */
+.game-container {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    touch-action: manipulation;
+}
+
+/* Extra Small Devices (Phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .game-title {
+        font-size: 2rem !important;
+    }
+    
+    .title-content {
+        padding: 1.5rem !important;
+        margin: 1rem;
+    }
+    
+    .character-sprite {
+        width: 100px !important;
+        height: 150px !important;
+        font-size: 3rem !important;
+    }
+    
+    .menu-button {
+        padding: 0.8rem 1.5rem !important;
+        font-size: 1rem !important;
+    }
+    
+    .game-content {
+        flex-direction: row !important;
+        gap: 0.5rem !important;
+        padding: 0.5rem !important;
+        width: 100vw !important;
+        height: calc(100vh - 120px) !important;
+    }
+    
+    .character-panel {
+        width: 100px !important;
+        min-width: 100px !important;
+        height: auto !important;
+        flex-direction: column !important;
+        padding: 0.5rem !important;
+    }
+    
+    .character-panel .character-sprite {
+        width: 70px !important;
+        height: 90px !important;
+        font-size: 2rem !important;
+    }
+    
+    .character-dialogue {
+        font-size: 0.7rem !important;
+        margin: 0.5rem 0 !important;
+        text-align: center !important;
+    }
+    
+    .game-board {
+        flex: 1 !important;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 0.5rem !important;
+    }
+    
+    .number-grid {
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 300px !important;
+        max-height: 400px !important;
+        gap: 0.2rem !important;
+        padding: 0.5rem !important;
+        display: grid !important;
+        place-items: stretch !important;
+        overflow: visible !important;
+    }
+    
+    .number-button {
+        font-size: 1.4rem !important;
+        min-height: 45px !important;
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+    }
+    
+    .hud-panel {
+        flex-wrap: wrap !important;
+        gap: 0.5rem !important;
+        padding: 0.5rem !important;
+    }
+    
+    .hud-item {
+        font-size: 0.8rem !important;
+    }
+    
+    .product-counter {
+        flex-wrap: wrap !important;
+        gap: 0.5rem !important;
+        padding: 0.5rem !important;
+    }
+    
+    .product-item {
+        font-size: 0.8rem !important;
+    }
+    
+    .dialogue-box {
+        margin: 0 1rem 1rem !important;
+        padding: 1rem !important;
+    }
+    
+    .dialogue-text {
+        font-size: 1rem !important;
+    }
+    
+    .ending-content {
+        padding: 1.5rem !important;
+        margin: 1rem !important;
+    }
+    
+    .ending-title {
+        font-size: 1.8rem !important;
+    }
+    
+    .final-score .score-value {
+        font-size: 2rem !important;
+    }
+}
+
+/* Small Devices (Landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .game-title {
+        font-size: 2.5rem;
+    }
+    
+    .title-content {
+        padding: 2rem;
+    }
+    
+    .character-sprite {
+        width: 120px;
+        height: 180px;
+        font-size: 4rem;
+    }
+    
+    .game-content {
+        gap: 0.8rem;
+        padding: 0.8rem;
+    }
+    
+    .character-panel {
+        width: 160px;
+    }
+    
+    .number-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        min-height: 250px;
+    }
+    
+    .number-button {
+        font-size: 1.8rem;
+    }
+    
+    .hud-item {
+        font-size: 0.9rem;
+    }
+    
+    .product-item {
+        font-size: 0.85rem;
+    }
+}
+
+/* Medium Devices (Tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .game-title {
+        font-size: 2.8rem;
+    }
+    
+    .title-content {
+        padding: 2.5rem;
+    }
+    
+    .character-sprite {
+        width: 150px;
+        height: 220px;
+        font-size: 5rem;
+    }
+    
+    .game-content {
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .character-panel {
+        width: 180px;
+    }
+    
+    .number-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1rem;
+        min-height: 280px;
+    }
+    
+    .number-button {
+        font-size: 1.8rem;
+    }
+    
+    .dialogue-text {
+        font-size: 1.2rem;
+    }
+    
+    .ending-title {
+        font-size: 2.2rem;
+    }
+}
+
+/* Large Devices (Desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    /* Default styles apply, minimal adjustments */
+    .game-title {
+        font-size: 3rem;
+    }
+    
+    .character-sprite {
+        width: 180px;
+        height: 260px;
+        font-size: 5.5rem;
+    }
+    
+    .number-button {
+        font-size: 2rem;
+    }
+}
+
+/* Extra Large Devices (Large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .game-container {
+        transform: scale(1.1);
+        transform-origin: center;
+    }
+    
+    .game-title {
+        font-size: 3.5rem;
+    }
+    
+    .character-sprite {
+        width: 220px;
+        height: 320px;
+        font-size: 6.5rem;
+    }
+    
+    .number-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1.5rem;
+        min-height: 350px;
+    }
+    
+    .number-button {
+        font-size: 2.2rem;
+    }
+    
+    .dialogue-text {
+        font-size: 1.4rem;
+    }
+    
+    .ending-title {
+        font-size: 3rem;
+    }
+    
+    .final-score .score-value {
+        font-size: 3.5rem;
+    }
+}
+
+/* Ultra Wide Screens (1920px and up) */
+@media (min-width: 1920px) {
+    .game-container {
+        transform: scale(1.2);
+        transform-origin: center;
+    }
+    
+    .game-title {
+        font-size: 4rem;
+    }
+    
+    .title-content {
+        padding: 4rem;
+    }
+    
+    .character-sprite {
+        width: 250px;
+        height: 350px;
+        font-size: 7rem;
+    }
+    
+    .number-button {
+        font-size: 2.5rem;
+    }
+    
+    .dialogue-text {
+        font-size: 1.6rem;
+    }
+}
+
+/* Landscape Orientation for Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .game-content {
+        flex-direction: row !important;
+        width: 100vw !important;
+        height: calc(100vh - 100px) !important;
+    }
+    
+    .character-panel {
+        width: 100px !important;
+        min-width: 100px !important;
+        height: auto !important;
+        flex-direction: column !important;
+    }
+    
+    .character-panel .character-sprite {
+        width: 70px !important;
+        height: 80px !important;
+        font-size: 1.8rem !important;
+    }
+    
+    .number-grid {
+        min-height: calc(100vh - 150px) !important;
+    }
+    
+    .number-button {
+        font-size: 1.5rem !important;
+        min-height: 45px !important;
+    }
+    
+    .dialogue-box {
+        margin: 0 1rem 0.5rem !important;
+        padding: 1rem !important;
+    }
+    
+    .dialogue-text {
+        font-size: 0.9rem !important;
+        min-height: 2rem !important;
+    }
+    
+    .ending-content {
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 1.5rem !important;
+    }
+    
+    .title-content {
+        padding: 1.5rem !important;
+    }
+    
+    .game-title {
+        font-size: 2rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .main-menu {
+        gap: 0.5rem !important;
+        margin-top: 1rem !important;
+    }
+    
+    .menu-button {
+        padding: 0.8rem 1.5rem !important;
+        font-size: 1rem !important;
+    }
+}
+
+/* High DPI/Retina Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .character-sprite::before {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+    
+    .number-button {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .title-content,
+    .ending-content,
+    .settings-content {
+        background: rgba(44, 24, 16, 0.95) !important;
+        color: white !important;
+    }
+    
+    .game-title,
+    .ending-title,
+    .settings-content h2 {
+        color: #FFD700 !important;
+    }
+    
+    .character-greeting,
+    .instructions p {
+        color: #D2691E !important;
+    }
+    
+    .game-board {
+        background: rgba(44, 24, 16, 0.9) !important;
+        color: white !important;
+    }
+    
+    .character-panel {
+        background: rgba(44, 24, 16, 0.9) !important;
+        color: white !important;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .game-container {
+        transform: none !important;
+    }
+    
+    .character-sprite::before {
+        animation: none !important;
+    }
+    
+    .menu-button:hover,
+    .number-button:hover {
+        transform: none !important;
+    }
+    
+    .screen {
+        transition: none !important;
+    }
+}
+
+/* Print Styles (for screenshots/documentation) */
+@media print {
+    .screen {
+        position: static !important;
+        display: block !important;
+        opacity: 1 !important;
+        page-break-after: always;
+    }
+    
+    .background {
+        display: none !important;
+    }
+    
+    .title-content,
+    .ending-content {
+        box-shadow: none !important;
+        border: 2px solid #2C1810 !important;
+    }
+    
+    .menu-button,
+    .ending-button {
+        border: 1px solid #2C1810 !important;
+        background: white !important;
+        color: #2C1810 !important;
+    }
+}
+
+/* Focus States for Accessibility */
+@media (min-width: 768px) {
+    .menu-button:focus,
+    .number-button:focus,
+    .next-button:focus,
+    .skip-button:focus,
+    .ending-button:focus {
+        outline: 3px solid #FFD700;
+        outline-offset: 3px;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    /* Enable full screen touch support */
+    html, body {
+        touch-action: manipulation !important;
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
+        user-select: none !important;
+        -webkit-touch-callout: none !important;
+        -webkit-tap-highlight-color: transparent !important;
+        overscroll-behavior: none !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+    }
+    
+    .game-container {
+        touch-action: manipulation !important;
+        overflow: hidden !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+    }
+    
+    /* Full screen game area */
+    #game-screen {
+        width: 100vw !important;
+        height: 100vh !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    #game-screen .game-content {
+        flex: 1 !important;
+        width: 100vw !important;
+        height: calc(100vh - 120px) !important;
+        display: flex !important;
+        flex-direction: row !important;
+    }
+    
+    #game-screen .game-board {
+        flex: 1 !important;
+        width: 100% !important;
+        height: 100% !important;
+    }
+    
+    #game-screen .number-grid {
+        flex: 1 !important;
+        width: 100% !important;
+        height: 100% !important;
+        min-height: calc(100vh - 200px) !important;
+        display: grid !important;
+        place-items: stretch !important;
+    }
+    
+    /* Larger touch targets for better mobile experience */
+    .menu-button,
+    .number-button {
+        min-height: 60px !important;
+        min-width: 60px !important;
+        touch-action: manipulation !important;
+        -webkit-tap-highlight-color: transparent !important;
+    }
+    
+    .number-button {
+        font-size: 1.8rem !important;
+        padding: 0.5rem !important;
+        border: 2px solid rgba(0, 0, 0, 0.1) !important;
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    /* Remove hover effects for touch devices */
+    .menu-button:hover,
+    .number-button:hover {
+        transform: none !important;
+        background: initial !important;
+    }
+    
+    /* Enhanced touch feedback */
+    .menu-button:active,
+    .number-button:active {
+        transform: scale(0.92) !important;
+        opacity: 0.7 !important;
+        transition: all 0.1s ease !important;
+    }
+    
+    /* Prevent text selection on touch */
+    .screen,
+    .screen * {
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
+        user-select: none !important;
+        -webkit-touch-callout: none !important;
+        -webkit-tap-highlight-color: transparent !important;
+    }
+    
+    /* Prevent zoom on double tap */
+    input, button, select, textarea {
+        touch-action: manipulation !important;
+    }
+}

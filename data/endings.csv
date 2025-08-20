@@ -1,0 +1,5 @@
+﻿ending_id,name,score_min,score_max,background,bgm,special_effects
+master,カフェマスター,2000,9999,bg_cafe_full.jpg,bgm_ending_master.mp3,applause;flowers
+popular,人気店オーナー,1200,1999,bg_cafe_popular.jpg,bgm_ending_popular.mp3,customer_chat
+cozy,街の憩いの場,600,1199,bg_cafe_cozy.jpg,bgm_ending_cozy.mp3,peaceful_ambiance
+newbie,新人バリスタ,0,599,bg_cafe_learning.jpg,bgm_ending_newbie.mp3,encouragement

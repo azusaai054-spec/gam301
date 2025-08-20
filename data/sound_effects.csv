@@ -1,0 +1,12 @@
+﻿sound_id,file_name,volume,loop,category,trigger_condition
+click_sound,click.mp3,0.7,false,effect,number_click
+success_sound,success.mp3,0.8,false,effect,correct_sequence
+error_sound,error.mp3,0.6,false,effect,wrong_click
+level_up_sound,levelup.mp3,0.9,false,effect,level_increase
+combo_sound,combo.mp3,0.8,false,effect,combo_trigger
+bgm_title,cafe_theme.mp3,0.5,true,bgm,scene_title
+bgm_game,gameplay.mp3,0.4,true,bgm,scene_main_game
+bgm_ending_master,ending_master.mp3,0.6,false,bgm,ending_master
+bgm_ending_popular,ending_popular.mp3,0.6,false,bgm,ending_popular
+bgm_ending_cozy,ending_cozy.mp3,0.6,false,bgm,ending_cozy
+bgm_ending_newbie,ending_newbie.mp3,0.6,false,bgm,ending_newbie

@@ -1,0 +1,5 @@
+﻿area_id,x,y,width,height,click_effect,sound_effect,animation
+number_click,0,0,60,60,number_process,click_sound.mp3,button_press
+menu_hover,0,0,200,50,highlight,hover_sound.mp3,glow_effect
+character_interact,650,150,140,300,character_reaction,interaction.mp3,bounce
+title_button,400,300,200,50,button_activate,button_click.mp3,scale_press

@@ -1,0 +1,7 @@
+﻿font_id,font_family,size,weight,color,shadow_color,shadow_offset_x,shadow_offset_y
+title_font,Noto Sans JP,48,bold,#2C1810,#FFFFFF,2,2
+dialogue_font,Noto Sans JP,18,normal,#2C1810,none,0,0
+hud_font,Noto Sans JP,16,bold,#FFFFFF,#000000,1,1
+score_font,Noto Sans JP,24,bold,#FFD700,#8B4513,1,1
+button_font,Noto Sans JP,20,bold,#2C1810,#FFFFFF,1,1
+number_font,Noto Sans JP,24,bold,#2C1810,#FFFFFF,1,1

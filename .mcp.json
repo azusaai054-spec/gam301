@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "E:\\claude\\origingame01"
+      ]
+    },
+    "serena": {
+      "command": "E:\\claude\\origingame01\\serena_mcp.bat",
+      "args": [
+        "."
+      ]
+    }
+  }
+}

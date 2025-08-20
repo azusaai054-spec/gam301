@@ -1,0 +1,272 @@
+/* Tile Design for Number Buttons */
+
+.number-button {
+    /* Reset button styles */
+    border: none !important;
+    outline: none !important;
+    cursor: pointer !important;
+    
+    /* Tile base styling */
+    background: linear-gradient(145deg, #f4f4f4 0%, #e8e8e8 50%, #d4d4d4 100%) !important;
+    position: relative !important;
+    border-radius: 8px !important;
+    
+    /* 3D tile effect */
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.15),
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1) !important;
+    
+    /* Typography */
+    font-family: 'Arial Black', 'Helvetica', sans-serif !important;
+    font-weight: 900 !important;
+    font-size: 1.8rem !important;
+    color: #2C1810 !important;
+    text-shadow: 
+        0 1px 0 rgba(255, 255, 255, 0.8),
+        0 2px 3px rgba(0, 0, 0, 0.2) !important;
+    
+    /* Layout - Critical for grid display */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 50px !important;
+    min-width: 50px !important;
+    max-height: 80px !important;
+    max-width: 80px !important;
+    aspect-ratio: 1 !important;
+    
+    /* Tile texture effect */
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(0, 0, 0, 0.05) 0%, transparent 50%) !important;
+    
+    /* Transform and transition */
+    transform: translateZ(0) !important;
+    transition: all 0.15s ease-out !important;
+    will-change: transform, box-shadow !important;
+    
+    /* Ensure visibility */
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 1 !important;
+}
+
+/* Tile border effect */
+.number-button::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border-radius: 10px;
+    background: linear-gradient(145deg, 
+        rgba(255, 255, 255, 0.1) 0%, 
+        rgba(255, 255, 255, 0.05) 50%, 
+        rgba(0, 0, 0, 0.02) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Number text styling */
+.number-button::after {
+    content: attr(data-number);
+    position: relative;
+    z-index: 2;
+    font-weight: 900;
+    font-size: inherit;
+    color: inherit;
+    text-shadow: inherit;
+}
+
+/* Hover effect for non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+    .number-button:hover {
+        transform: translateY(-2px) translateZ(0) !important;
+        box-shadow: 
+            0 8px 16px rgba(0, 0, 0, 0.2),
+            0 4px 8px rgba(0, 0, 0, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.9),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.1) !important;
+        background: linear-gradient(145deg, #f8f8f8 0%, #ececec 50%, #d8d8d8 100%) !important;
+    }
+}
+
+/* Active/Press effect */
+.number-button:active,
+.number-button.touching {
+    transform: translateY(1px) scale(0.98) translateZ(0) !important;
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.15),
+        0 1px 2px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.15) !important;
+    background: linear-gradient(145deg, #e0e0e0 0%, #d0d0d0 50%, #c0c0c0 100%) !important;
+    transition: all 0.05s ease-out !important;
+}
+
+/* Clicked state (correct answer) */
+.number-button.clicked {
+    background: linear-gradient(145deg, #90EE90 0%, #7DD87D 50%, #6BC66B 100%) !important;
+    color: #1B5E20 !important;
+    text-shadow: 
+        0 1px 0 rgba(255, 255, 255, 0.9),
+        0 2px 3px rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 
+        0 4px 8px rgba(76, 175, 80, 0.3),
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1) !important;
+    animation: tileSuccess 0.4s ease-out !important;
+}
+
+/* Error state */
+.number-button.error-shake {
+    background: linear-gradient(145deg, #FFB3BA 0%, #FF9999 50%, #FF7F7F 100%) !important;
+    color: #8B0000 !important;
+    animation: tileError 0.5s ease-out !important;
+}
+
+/* Disabled state */
+.number-button:disabled,
+.number-button.disabled {
+    background: linear-gradient(145deg, #CCCCCC 0%, #B8B8B8 50%, #A4A4A4 100%) !important;
+    color: #666666 !important;
+    cursor: not-allowed !important;
+    opacity: 0.6 !important;
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Perfect click effect */
+.number-button.perfect-click {
+    animation: tilePerfect 0.6s ease-out !important;
+}
+
+/* Tile animations */
+@keyframes tileSuccess {
+    0% { 
+        transform: scale(1) translateZ(0);
+        background: linear-gradient(145deg, #f4f4f4 0%, #e8e8e8 50%, #d4d4d4 100%);
+    }
+    50% { 
+        transform: scale(1.1) translateZ(0);
+        box-shadow: 
+            0 8px 16px rgba(76, 175, 80, 0.4),
+            0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    100% { 
+        transform: scale(1) translateZ(0);
+        background: linear-gradient(145deg, #90EE90 0%, #7DD87D 50%, #6BC66B 100%);
+    }
+}
+
+@keyframes tileError {
+    0%, 100% { transform: translateX(0) translateZ(0); }
+    10% { transform: translateX(-3px) translateZ(0); }
+    20% { transform: translateX(3px) translateZ(0); }
+    30% { transform: translateX(-3px) translateZ(0); }
+    40% { transform: translateX(3px) translateZ(0); }
+    50% { transform: translateX(-2px) translateZ(0); }
+    60% { transform: translateX(2px) translateZ(0); }
+    70% { transform: translateX(-1px) translateZ(0); }
+    80% { transform: translateX(1px) translateZ(0); }
+}
+
+@keyframes tilePerfect {
+    0% { 
+        transform: scale(1) translateZ(0);
+        box-shadow: 
+            0 6px 12px rgba(0, 0, 0, 0.15),
+            0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    25% { 
+        transform: scale(1.05) translateZ(0);
+        box-shadow: 
+            0 12px 24px rgba(255, 215, 0, 0.4),
+            0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+    50% { 
+        transform: scale(1.1) translateZ(0);
+        box-shadow: 
+            0 16px 32px rgba(255, 215, 0, 0.5),
+            0 8px 16px rgba(0, 0, 0, 0.2);
+        background: linear-gradient(145deg, #FFE55C 0%, #FFD700 50%, #FFC700 100%);
+    }
+    75% { 
+        transform: scale(1.05) translateZ(0);
+        box-shadow: 
+            0 12px 24px rgba(255, 215, 0, 0.3),
+            0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+    100% { 
+        transform: scale(1) translateZ(0);
+        box-shadow: 
+            0 6px 12px rgba(0, 0, 0, 0.15),
+            0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Small mobile adjustments */
+@media (max-width: 575.98px) {
+    .number-button {
+        font-size: 1.8rem !important;
+        min-height: 50px !important;
+        min-width: 50px !important;
+        border-radius: 10px !important;
+    }
+    
+    .number-button::before {
+        top: 1px;
+        left: 1px;
+        right: 1px;
+        bottom: 1px;
+        border-radius: 9px;
+    }
+}
+
+/* Medium mobile adjustments */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .number-button {
+        font-size: 2rem !important;
+        min-height: 55px !important;
+        min-width: 55px !important;
+    }
+}
+
+/* Tablet and larger adjustments */
+@media (min-width: 768px) {
+    .number-button {
+        font-size: 2.4rem !important;
+        min-height: 70px !important;
+        min-width: 70px !important;
+        border-radius: 14px !important;
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .number-button {
+        text-shadow: 
+            0 0.5px 0 rgba(255, 255, 255, 0.8),
+            0 1px 2px rgba(0, 0, 0, 0.3) !important;
+    }
+}
+
+/* Prevent tile content from being selected */
+.number-button,
+.number-button::before,
+.number-button::after {
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+    -webkit-touch-callout: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+}

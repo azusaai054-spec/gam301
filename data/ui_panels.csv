@@ -1,0 +1,6 @@
+﻿panel_id,panel_type,x,y,width,height,background_color,opacity,border_radius,z_index
+hud_panel,info,0,0,800,80,#2C1810,0.9,0,8
+game_board,main,50,100,700,500,#F5E6D3,0.95,10,5
+character_panel,side,650,150,140,300,#FFFFFF,0.85,15,6
+dialogue_panel,overlay,50,450,700,140,#2C1810,0.95,10,9
+title_panel,main,200,200,400,300,#FFFFFF,0.9,20,7

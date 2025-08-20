@@ -1,0 +1,13 @@
+﻿element_id,type,image_file,x,y,width,height,z_index,tooltip
+start_button,button,btn_start.png,400,300,200,50,10,ゲームを開始します
+story_button,button,btn_story.png,400,360,200,50,10,ストーリーを見る
+settings_button,button,btn_settings.png,400,420,200,50,10,設定画面を開きます
+help_button,button,btn_help.png,400,480,200,50,10,ヘルプを表示します
+number_1,clickable,num_01.png,100,100,60,60,5,注文番号1
+number_2,clickable,num_02.png,180,100,60,60,5,注文番号2
+number_3,clickable,num_03.png,260,100,60,60,5,注文番号3
+number_4,clickable,num_04.png,100,180,60,60,5,注文番号4
+number_5,clickable,num_05.png,180,180,60,60,5,注文番号5
+level_display,info,level_bg.png,20,20,80,30,8,現在のレベル
+score_display,info,score_bg.png,120,20,120,30,8,現在のスコア
+time_display,info,time_bg.png,260,20,80,30,8,残り時間

@@ -1,0 +1,529 @@
+/* Animation Styles for Café Number Rush */
+
+/* Tile-specific animations */
+@keyframes tileEntrance {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) rotateY(180deg) translateZ(0);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1) rotateY(90deg) translateZ(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotateY(0deg) translateZ(0);
+    }
+}
+
+@keyframes tileFlip {
+    0% {
+        transform: rotateY(0deg) translateZ(0);
+    }
+    50% {
+        transform: rotateY(90deg) translateZ(0);
+    }
+    100% {
+        transform: rotateY(0deg) translateZ(0);
+    }
+}
+
+@keyframes comboCascade {
+    0% {
+        opacity: 1;
+        transform: scale(1) translateZ(0);
+        filter: hue-rotate(0deg);
+    }
+    25% {
+        opacity: 0.8;
+        transform: scale(1.05) translateZ(0);
+        filter: hue-rotate(90deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1) translateZ(0);
+        filter: hue-rotate(180deg);
+    }
+    75% {
+        opacity: 0.9;
+        transform: scale(1.05) translateZ(0);
+        filter: hue-rotate(270deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateZ(0);
+        filter: hue-rotate(360deg);
+    }
+}
+
+@keyframes tileGlow {
+    0%, 100% {
+        box-shadow: 
+            0 6px 12px rgba(0, 0, 0, 0.15),
+            0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        box-shadow: 
+            0 8px 16px rgba(255, 215, 0, 0.6),
+            0 4px 8px rgba(255, 215, 0, 0.4),
+            0 0 20px rgba(255, 215, 0, 0.3);
+    }
+}
+
+/* Keyframe Definitions */
+@keyframes float {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0px);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-20px);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes successPulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 8px 16px rgba(50, 205, 50, 0.4);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+}
+
+@keyframes errorShake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+@keyframes levelUpCelebration {
+    0% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    25% {
+        transform: scale(1.1) rotate(5deg);
+        opacity: 0.9;
+    }
+    50% {
+        transform: scale(1.2) rotate(-5deg);
+        opacity: 0.8;
+    }
+    75% {
+        transform: scale(1.1) rotate(3deg);
+        opacity: 0.9;
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes comboSparkle {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(180deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.5) rotate(360deg);
+    }
+}
+
+@keyframes textTypewriter {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slideInFromBottom {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutToBottom {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes coinSpin {
+    0% {
+        transform: rotateY(0deg);
+    }
+    50% {
+        transform: rotateY(90deg);
+    }
+    100% {
+        transform: rotateY(180deg);
+    }
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes steamRise {
+    0% {
+        opacity: 0.8;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-20px) scale(1.5);
+    }
+}
+
+@keyframes bubblePop {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Tile Animation Classes */
+.tile-entrance {
+    animation: tileEntrance 0.6s ease-out forwards;
+}
+
+.tile-flip {
+    animation: tileFlip 0.4s ease-in-out;
+}
+
+.tile-cascade {
+    animation: comboCascade 1s ease-out;
+}
+
+.tile-glow {
+    animation: tileGlow 2s ease-in-out infinite;
+}
+
+/* Animation Classes */
+.bounce-animation {
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.float-animation {
+    animation: float 3s ease-in-out infinite;
+}
+
+.success-pulse {
+    animation: successPulse 0.3s ease-out;
+}
+
+.error-shake {
+    animation: errorShake 0.5s ease-in-out;
+}
+
+.level-up-celebration {
+    animation: levelUpCelebration 1s ease-out;
+}
+
+.combo-sparkle {
+    animation: comboSparkle 0.5s linear;
+    position: absolute;
+    pointer-events: none;
+}
+
+.typewriter-text {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: textTypewriter 0.05s steps(1) forwards;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in forwards;
+}
+
+.fade-out {
+    animation: fadeOut 0.5s ease-out forwards;
+}
+
+.slide-in-bottom {
+    animation: slideInFromBottom 0.5s ease-out forwards;
+}
+
+.slide-out-bottom {
+    animation: slideOutToBottom 0.5s ease-in forwards;
+}
+
+.coin-spin {
+    animation: coinSpin 1s ease-in-out infinite;
+}
+
+.sparkle-animation {
+    animation: sparkle 1.5s ease-in-out infinite;
+}
+
+.steam-rise {
+    animation: steamRise 2s ease-out infinite;
+}
+
+.bubble-pop {
+    animation: bubblePop 0.6s ease-in-out infinite;
+}
+
+/* Hover Animations */
+.hover-scale:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-out;
+}
+
+.hover-glow:hover {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+    transition: box-shadow 0.3s ease-out;
+}
+
+.hover-lift:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-out;
+}
+
+/* Click Animations */
+.click-scale:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease-in;
+}
+
+.click-rotate:active {
+    transform: rotate(5deg);
+    transition: transform 0.1s ease-in;
+}
+
+/* Particle Effects */
+.particle-system {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, #FFD700 0%, #FFA500 100%);
+    border-radius: 50%;
+    animation: particleFloat 2s ease-out forwards;
+}
+
+@keyframes particleFloat {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100px) scale(0.3);
+    }
+}
+
+/* Screen Transition Effects */
+.screen-transition-in {
+    animation: fadeIn 0.5s ease-in forwards;
+}
+
+.screen-transition-out {
+    animation: fadeOut 0.5s ease-out forwards;
+}
+
+/* Character Emotion Animations */
+.character-happy {
+    animation: bounce 1s ease-in-out;
+}
+
+.character-excited {
+    animation: levelUpCelebration 0.8s ease-out;
+}
+
+.character-worried {
+    animation: errorShake 0.5s ease-in-out;
+}
+
+.character-surprised {
+    animation: successPulse 0.6s ease-out;
+}
+
+/* UI Element Animations */
+.score-increase {
+    position: relative;
+}
+
+.score-increase::after {
+    content: '+' attr(data-points);
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #32CD32;
+    font-weight: bold;
+    font-size: 1.2rem;
+    animation: scorePopup 1s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes scorePopup {
+    0% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-30px);
+    }
+}
+
+/* Combo Effect Animations */
+.combo-effect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    font-weight: bold;
+    color: #FFD700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: comboAppear 1s ease-out forwards;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+@keyframes comboAppear {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* Perfect Click Effect */
+.perfect-click {
+    position: relative;
+}
+
+.perfect-click::after {
+    content: 'PERFECT!';
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #FF6347;
+    font-weight: bold;
+    font-size: 1rem;
+    animation: perfectPopup 1.5s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes perfectPopup {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(10px) scale(0.8);
+    }
+    30% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-10px) scale(1.1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-40px) scale(0.9);
+    }
+}
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

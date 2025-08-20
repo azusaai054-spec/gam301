@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café Number Rush - テスト</title>
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+            color: white;
+            margin: 0;
+            padding: 1rem;
+            min-height: 100vh;
+        }
+        
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            border-radius: 20px;
+        }
+        
+        .test-item {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 1rem 0;
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid #FFD700;
+        }
+        
+        .test-success {
+            border-left-color: #32CD32;
+            background: rgba(50, 205, 50, 0.2);
+        }
+        
+        .test-error {
+            border-left-color: #FF6347;
+            background: rgba(255, 99, 71, 0.2);
+        }
+        
+        .test-button {
+            background: #D2691E;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            margin: 0.5rem;
+        }
+        
+        .test-button:hover {
+            background: #FF7F50;
+        }
+        
+        .launch-button {
+            background: linear-gradient(135deg, #32CD32 0%, #228B22 100%);
+            padding: 1.5rem 3rem;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: 2rem auto;
+            display: block;
+            text-decoration: none;
+            text-align: center;
+            width: fit-content;
+        }
+        
+        .console-output {
+            background: #000;
+            color: #0f0;
+            font-family: monospace;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            max-height: 200px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🎮 Café Number Rush - 動作テスト</h1>
+        
+        <div class="test-item" id="init-test">
+            <h3>📋 初期化テスト</h3>
+            <p id="init-status">テスト準備中...</p>
+            <button class="test-button" onclick="runInitTest()">初期化テスト実行</button>
+        </div>
+        
+        <div class="test-item" id="csv-test">
+            <h3>📊 CSVデータ読み込みテスト</h3>
+            <p id="csv-status">テスト準備中...</p>
+            <button class="test-button" onclick="runCSVTest()">CSV読み込みテスト実行</button>
+        </div>
+        
+        <div class="test-item" id="manager-test">
+            <h3>🔧 マネージャー相互参照テスト</h3>
+            <p id="manager-status">テスト準備中...</p>
+            <button class="test-button" onclick="runManagerTest()">マネージャーテスト実行</button>
+        </div>
+        
+        <div class="test-item" id="game-test">
+            <h3>🎯 ゲーム機能テスト</h3>
+            <p id="game-status">テスト準備中...</p>
+            <button class="test-button" onclick="runGameTest()">ゲーム機能テスト実行</button>
+        </div>
+        
+        <div class="console-output" id="console-output">
+コンソール出力がここに表示されます...
+        </div>
+        
+        <button class="test-button" onclick="runAllTests()">🚀 全テスト実行</button>
+        
+        <a href="index-browser.html" class="launch-button">
+            ✅ テスト完了 - ゲーム起動
+        </a>
+    </div>
+
+    <!-- Game Scripts -->
+    <script src="js/csv-loader.js"></script>
+    <script src="js/audio-manager.js"></script>
+    <script src="js/ui-manager.js"></script>
+    <script src="js/game-controller.js"></script>
+    <script src="js/main.js"></script>
+    
+    <script>
+        let testResults = {};
+        let consoleOutput = document.getElementById('console-output');
+        
+        function log(message) {
+            console.log(message);
+            consoleOutput.textContent += new Date().toLocaleTimeString() + ': ' + message + '\n';
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+        
+        function updateTestStatus(testId, status, success) {
+            const element = document.getElementById(testId);
+            const statusElement = document.getElementById(testId.replace('-test', '-status'));
+            
+            if (success) {
+                element.classList.add('test-success');
+                element.classList.remove('test-error');
+                statusElement.textContent = '✅ ' + status;
+            } else {
+                element.classList.add('test-error');
+                element.classList.remove('test-success');
+                statusElement.textContent = '❌ ' + status;
+            }
+            
+            testResults[testId] = success;
+        }
+        
+        async function runInitTest() {
+            log('初期化テストを開始...');
+            
+            try {
+                // Check if main app is initialized
+                if (typeof CafeNumberRush === 'undefined') {
+                    throw new Error('CafeNumberRush クラスが見つかりません');
+                }
+                
+                // Wait for initialization
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                if (window.cafeNumberRush && window.cafeNumberRush.isInitialized) {
+                    updateTestStatus('init-test', '初期化完了', true);
+                    log('✅ メインアプリケーション初期化成功');
+                } else {
+                    throw new Error('アプリケーション初期化が未完了');
+                }
+                
+            } catch (error) {
+                updateTestStatus('init-test', '初期化失敗: ' + error.message, false);
+                log('❌ 初期化エラー: ' + error.message);
+            }
+        }
+        
+        async function runCSVTest() {
+            log('CSV読み込みテストを開始...');
+            
+            try {
+                const testData = await CSVLoader.loadCSV('scenes.csv');
+                
+                if (testData && testData.length > 0) {
+                    updateTestStatus('csv-test', `CSV読み込み成功 (${testData.length}件)`, true);
+                    log(`✅ scenes.csv読み込み成功: ${testData.length}件のデータ`);
+                } else {
+                    throw new Error('CSVデータが空です');
+                }
+                
+                // Test all CSV files
+                const csvFiles = ['characters.csv', 'dialogues.csv', 'game_balance.csv'];
+                for (const file of csvFiles) {
+                    try {
+                        const data = await CSVLoader.loadCSV(file);
+                        log(`✅ ${file}: ${data.length}件`);
+                    } catch (error) {
+                        log(`⚠️ ${file}: ${error.message}`);
+                    }
+                }
+                
+            } catch (error) {
+                updateTestStatus('csv-test', 'CSV読み込み失敗: ' + error.message, false);
+                log('❌ CSV読み込みエラー: ' + error.message);
+            }
+        }
+        
+        async function runManagerTest() {
+            log('マネージャー相互参照テストを開始...');
+            
+            try {
+                if (!window.uiManager) {
+                    throw new Error('UIManager が見つかりません');
+                }
+                
+                if (!window.audioManager) {
+                    throw new Error('AudioManager が見つかりません');
+                }
+                
+                if (!window.gameController) {
+                    throw new Error('GameController が見つかりません');
+                }
+                
+                // Test method existence
+                if (typeof window.uiManager.setGameController !== 'function') {
+                    throw new Error('UIManager.setGameController メソッドが見つかりません');
+                }
+                
+                if (typeof window.gameController.setUIManager !== 'function') {
+                    throw new Error('GameController.setUIManager メソッドが見つかりません');
+                }
+                
+                updateTestStatus('manager-test', 'マネージャー相互参照OK', true);
+                log('✅ 全マネージャーが正常に参照されています');
+                
+            } catch (error) {
+                updateTestStatus('manager-test', 'マネージャー参照エラー: ' + error.message, false);
+                log('❌ マネージャー参照エラー: ' + error.message);
+            }
+        }
+        
+        async function runGameTest() {
+            log('ゲーム機能テストを開始...');
+            
+            try {
+                if (!window.gameController) {
+                    throw new Error('GameController が見つかりません');
+                }
+                
+                // Test game data
+                const performanceInfo = window.cafeNumberRush?.getPerformanceInfo();
+                if (!performanceInfo?.dataLoaded) {
+                    throw new Error('ゲームデータが読み込まれていません');
+                }
+                
+                // Test basic functionality
+                if (typeof window.gameController.startGame !== 'function') {
+                    throw new Error('startGame メソッドが見つかりません');
+                }
+                
+                updateTestStatus('game-test', 'ゲーム機能OK', true);
+                log('✅ ゲームの基本機能が正常です');
+                
+            } catch (error) {
+                updateTestStatus('game-test', 'ゲーム機能エラー: ' + error.message, false);
+                log('❌ ゲーム機能エラー: ' + error.message);
+            }
+        }
+        
+        async function runAllTests() {
+            log('=== 全テスト実行開始 ===');
+            
+            await runInitTest();
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            await runCSVTest();
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            await runManagerTest();
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            await runGameTest();
+            
+            const allPassed = Object.values(testResults).every(result => result);
+            
+            if (allPassed) {
+                log('🎉 全テスト合格！ゲームは正常に動作します');
+                document.querySelector('.launch-button').style.background = 
+                    'linear-gradient(135deg, #32CD32 0%, #228B22 100%)';
+            } else {
+                log('⚠️ 一部テストが失敗しました。詳細を確認してください');
+                document.querySelector('.launch-button').style.background = 
+                    'linear-gradient(135deg, #FFA500 0%, #FF8C00 100%)';
+            }
+            
+            log('=== 全テスト実行完了 ===');
+        }
+        
+        // Auto-run basic tests when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            log('🎮 Café Number Rush テストページ読み込み完了');
+            
+            setTimeout(() => {
+                runAllTests();
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

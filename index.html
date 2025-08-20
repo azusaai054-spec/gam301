@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café Number Rush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- タイトル画面 -->
+    <div id="title-screen" class="screen active">
+        <div class="background">
+            <div class="cafe-exterior"></div>
+        </div>
+        <div class="title-content">
+            <h1 class="game-title">☕ Café Number Rush ☕</h1>
+            <div class="character-portrait">
+                <div class="emma-portrait" id="emma-title"></div>
+                <div class="character-greeting">いらっしゃいませ！</div>
+            </div>
+            <div class="main-menu">
+                <button class="menu-button" id="start-game" data-action="start">
+                    🎮 ゲーム開始
+                </button>
+                <button class="menu-button" id="story-mode" data-action="story">
+                    📖 ストーリー
+                </button>
+                <button class="menu-button" id="settings" data-action="settings">
+                    ⚙️ 設定
+                </button>
+                <button class="menu-button" id="help" data-action="help">
+                    ❓ ヘルプ
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 会話シーン -->
+    <div id="dialogue-screen" class="screen">
+        <div class="background">
+            <div class="cafe-interior"></div>
+        </div>
+        <div class="dialogue-content">
+            <div class="character-display">
+                <div class="character-sprite" id="dialogue-character"></div>
+                <div class="character-name" id="character-name">エマ</div>
+                <div class="character-emotion" id="character-emotion">😊</div>
+            </div>
+            <div class="dialogue-box">
+                <div class="dialogue-text" id="dialogue-text">
+                    <span id="text-content"></span>
+                </div>
+                <div class="dialogue-controls">
+                    <button class="next-button" id="next-dialogue">▶</button>
+                    <button class="skip-button" id="skip-dialogue">スキップ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- メインゲーム画面 -->
+    <div id="game-screen" class="screen">
+        <!-- HUD Panel -->
+        <div class="hud-panel">
+            <div class="hud-item">
+                <span class="icon">📊</span>
+                <span id="level-display">Lv: 1</span>
+            </div>
+            <div class="hud-item">
+                <span class="icon">💰</span>
+                <span id="money-display">¥0</span>
+            </div>
+            <div class="hud-item">
+                <span class="icon">⭐</span>
+                <span id="score-display">0</span>
+            </div>
+            <div class="hud-item">
+                <span class="icon">⏰</span>
+                <span id="time-display">15s</span>
+            </div>
+        </div>
+
+        <!-- Game Content -->
+        <div class="game-content">
+            <!-- Character Panel -->
+            <div class="character-panel">
+                <div class="character-sprite" id="game-character"></div>
+                <div class="character-dialogue" id="character-dialogue">頑張って！</div>
+                <div class="character-status">
+                    <div class="combo-meter">
+                        <div class="combo-label">コンボ</div>
+                        <div class="combo-value" id="combo-display">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Board -->
+            <div class="game-board" id="game-board">
+                <div class="instructions">
+                    <p>注文番号を <strong>1から順番に</strong> クリックしてください！</p>
+                </div>
+                <div class="number-grid" id="number-grid">
+                    <!-- Numbers will be generated here -->
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Counter -->
+        <div class="product-counter">
+            <div class="product-item">
+                <span class="product-icon">☕</span>
+                <span class="product-name">コーヒー</span>
+                <span class="product-count" id="coffee-count">×0</span>
+            </div>
+            <div class="product-item">
+                <span class="product-icon">🥐</span>
+                <span class="product-name">クロワッサン</span>
+                <span class="product-count" id="croissant-count">×0</span>
+            </div>
+            <div class="product-item">
+                <span class="product-icon">🍰</span>
+                <span class="product-name">ケーキ</span>
+                <span class="product-count" id="cake-count">×0</span>
+            </div>
+            <div class="product-item">
+                <span class="product-icon">🥤</span>
+                <span class="product-name">ドリンク</span>
+                <span class="product-count" id="drink-count">×0</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- エンディング画面 -->
+    <div id="ending-screen" class="screen">
+        <div class="ending-background" id="ending-background"></div>
+        <div class="ending-content">
+            <div class="ending-title" id="ending-title">カフェマスター</div>
+            <div class="ending-character">
+                <div class="character-sprite" id="ending-character"></div>
+            </div>
+            <div class="ending-dialogue">
+                <div class="dialogue-text" id="ending-dialogue-text"></div>
+            </div>
+            <div class="final-score">
+                <div class="score-label">最終スコア</div>
+                <div class="score-value" id="final-score">0</div>
+                <div class="rank-display" id="rank-display">S</div>
+            </div>
+            <div class="ending-controls">
+                <button class="ending-button" id="play-again">🔄 もう一度</button>
+                <button class="ending-button" id="view-results">📋 結果詳細</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 設定画面 -->
+    <div id="settings-screen" class="screen">
+        <div class="settings-content">
+            <h2>設定</h2>
+            <div class="setting-item">
+                <label>BGM音量</label>
+                <input type="range" id="bgm-volume" min="0" max="100" value="50">
+                <span id="bgm-volume-value">50%</span>
+            </div>
+            <div class="setting-item">
+                <label>効果音音量</label>
+                <input type="range" id="se-volume" min="0" max="100" value="70">
+                <span id="se-volume-value">70%</span>
+            </div>
+            <div class="setting-item">
+                <label>オートセーブ</label>
+                <input type="checkbox" id="auto-save" checked>
+            </div>
+            <div class="settings-controls">
+                <button class="settings-button" id="reset-save">セーブデータリセット</button>
+                <button class="settings-button" id="close-settings">閉じる</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">読み込み中...</div>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="bgm-player" loop></audio>
+    <audio id="se-player"></audio>
+
+    <!-- Scripts -->
+    <script src="js/csv-loader.js"></script>
+    <script src="js/audio-manager.js"></script>
+    <script src="js/ui-manager.js"></script>
+    <script src="js/game-controller.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

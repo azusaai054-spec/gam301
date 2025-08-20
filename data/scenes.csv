@@ -1,0 +1,8 @@
+﻿scene_id,scene_name,background_image,bgm_file,duration
+title,タイトル画面,bg_cafe_exterior.jpg,bgm_cafe_theme.mp3,0
+tutorial,チュートリアル,bg_cafe_interior.jpg,bgm_tutorial.mp3,120
+main_game,メインゲーム,bg_game_board.jpg,bgm_gameplay.mp3,900
+ending_master,カフェマスター,bg_cafe_full.jpg,bgm_ending_master.mp3,30
+ending_popular,人気店オーナー,bg_cafe_popular.jpg,bgm_ending_popular.mp3,30
+ending_cozy,街の憩いの場,bg_cafe_cozy.jpg,bgm_ending_cozy.mp3,30
+ending_newbie,新人バリスタ,bg_cafe_learning.jpg,bgm_ending_newbie.mp3,30

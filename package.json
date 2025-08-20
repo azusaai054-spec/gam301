@@ -1,0 +1,31 @@
+{
+  "name": "cafe-number-rush",
+  "version": "1.0.0",
+  "description": "カフェ経営×数字クリッカーゲーム",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder",
+    "validate-csv": "node scripts/validate-csv.js"
+  },
+  "keywords": ["game", "cafe", "clicker", "electron"],
+  "author": "Claude Code",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.4"
+  },
+  "dependencies": {},
+  "build": {
+    "appId": "com.cafe.numberrush",
+    "productName": "Café Number Rush",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!node_modules"
+    ]
+  }
+}
