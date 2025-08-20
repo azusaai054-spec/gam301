@@ -246,20 +246,29 @@ class UIManager {
     }
     
     adjustEndingContent(endingContent) {
+        // Set ending content to fill entire screen responsively
+        endingContent.style.width = '100%';
+        endingContent.style.height = '100%';
+        endingContent.style.maxWidth = '100vw';
+        endingContent.style.maxHeight = '100vh';
+        endingContent.style.overflow = 'hidden';
+        endingContent.style.display = 'flex';
+        endingContent.style.flexDirection = 'column';
+        endingContent.style.justifyContent = 'space-evenly';
+        
+        // Adjust font sizes based on screen size
         const viewport = {
             width: window.innerWidth,
             height: window.innerHeight
         };
         
-        const maxWidth = Math.min(viewport.width * 0.9, 600);
-        const maxHeight = viewport.height * 0.85;
-        
-        endingContent.style.maxWidth = `${maxWidth}px`;
-        endingContent.style.maxHeight = `${maxHeight}px`;
-        
-        // Check if content overflows and enable scrolling
-        if (endingContent.scrollHeight > endingContent.clientHeight) {
-            endingContent.style.overflowY = 'auto';
+        // Scale content for very small screens
+        if (viewport.height < 500 || viewport.width < 350) {
+            endingContent.style.fontSize = '0.85em';
+        } else if (viewport.height < 600) {
+            endingContent.style.fontSize = '0.9em';
+        } else {
+            endingContent.style.fontSize = '1em';
         }
     }
     

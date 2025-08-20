@@ -120,20 +120,38 @@
     }
     
     .ending-content {
-        padding: 1.5rem !important;
-        margin: 1rem !important;
-        max-width: 95vw !important;
-        max-height: 85vh !important;
-        overflow-y: auto !important;
+        padding: 1rem !important;
+        margin: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100vw !important;
+        max-height: 100vh !important;
+        overflow: hidden !important;
         box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-evenly !important;
     }
     
     .ending-title {
-        font-size: 1.8rem !important;
+        font-size: clamp(1.2rem, 6vw, 1.8rem) !important;
+        margin-bottom: 0.5rem !important;
     }
     
     .final-score .score-value {
-        font-size: 2rem !important;
+        font-size: clamp(1.5rem, 7vw, 2rem) !important;
+    }
+    
+    .ending-dialogue {
+        font-size: clamp(0.9rem, 3vw, 1.1rem) !important;
+        padding: 0.8rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .ending-character .character-sprite {
+        width: clamp(80px, 18vw, 120px) !important;
+        height: clamp(100px, 22vw, 150px) !important;
+        font-size: clamp(2.5rem, 7vw, 4rem) !important;
     }
 }
 
@@ -359,15 +377,24 @@
     }
     
     .ending-content {
-        max-height: 85vh !important;
-        max-width: 95vw !important;
-        overflow-y: auto !important;
-        padding: 1.5rem !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100vw !important;
+        max-height: 100vh !important;
+        overflow: hidden !important;
+        padding: clamp(0.8rem, 2vw, 1.5rem) !important;
         box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-evenly !important;
     }
     
     .title-content {
         padding: 1.5rem !important;
+    }
+    
+    #ending-screen {
+        padding: 0.5rem !important;
     }
     
     .game-title {
