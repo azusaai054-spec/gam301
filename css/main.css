@@ -13,8 +13,8 @@
     --viewport-height: 100vh;
     --viewport-ratio: 1.78;
     --font-scale: 1;
-    --button-size: auto;
-    --button-font-size: auto;
+    --button-size: 80px;
+    --button-font-size: 2rem;
 }
 
 body {
@@ -396,24 +396,24 @@ body {
 .number-button {
     background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
     border: none;
-    border-radius: clamp(5px, 1vw, 10px);
-    font-size: var(--button-font-size, clamp(1rem, 3vw, 2rem));
+    border-radius: clamp(8px, 1.5vw, 15px);
+    font-size: var(--button-font-size, clamp(1.5rem, 4vw, 2.5rem));
     font-weight: bold;
     color: #2C1810;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
     display: flex;
     align-items: center;
     justify-content: center;
     aspect-ratio: 1 / 1;
     font-family: inherit;
-    width: var(--button-size, 40px);
-    height: var(--button-size, 40px);
-    min-width: var(--button-size, 40px);
-    min-height: var(--button-size, 40px);
-    max-width: var(--button-size, 40px);
-    max-height: var(--button-size, 40px);
+    width: var(--button-size, 80px);
+    height: var(--button-size, 80px);
+    min-width: var(--button-size, 80px);
+    min-height: var(--button-size, 80px);
+    max-width: var(--button-size, 80px);
+    max-height: var(--button-size, 80px);
     box-sizing: border-box;
     position: relative;
 }

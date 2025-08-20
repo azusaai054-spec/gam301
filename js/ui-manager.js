@@ -216,17 +216,17 @@ class UIManager {
         // Force square buttons - use the smaller of width/height constraints
         const maxSquareSize = Math.min(buttonWidth, maxButtonHeight);
         
-        // Ensure buttons are not too small or too large, but always square
-        const minButtonSize = Math.max(35, Math.min(window.innerWidth, window.innerHeight) * 0.08);
-        const maxButtonSize = Math.min(80, Math.min(window.innerWidth, window.innerHeight) * 0.15);
+        // Ensure buttons are not too small or too large, but always square - Touch the Numbers style
+        const minButtonSize = Math.max(60, Math.min(window.innerWidth, window.innerHeight) * 0.12);
+        const maxButtonSize = Math.min(160, Math.min(window.innerWidth, window.innerHeight) * 0.25);
         
         const buttonSize = Math.max(minButtonSize, Math.min(maxSquareSize, maxButtonSize));
         
         // Apply the calculated square size
         numberGrid.style.setProperty('--button-size', `${buttonSize}px`);
         
-        // Adjust font size based on button size
-        const fontSize = Math.max(12, Math.min(24, buttonSize * 0.35));
+        // Adjust font size based on button size - larger for Touch the Numbers style
+        const fontSize = Math.max(16, Math.min(32, buttonSize * 0.4));
         numberGrid.style.setProperty('--button-font-size', `${fontSize}px`);
         
         // Update all number buttons to be perfect squares
