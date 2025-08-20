@@ -9,9 +9,11 @@ class UIManager {
         this.typewriterTimer = null;
         this.currentMessage = null;
         this.messageTimer = null;
+        this.resizeObserver = null;
         
         this.initializeScreens();
         this.setupEventListeners();
+        this.setupResponsiveHandlers();
     }
     
     initializeScreens() {
@@ -83,6 +85,197 @@ class UIManager {
         document.addEventListener('keydown', (e) => {
             this.handleKeyboard(e);
         });
+    }
+    
+    setupResponsiveHandlers() {
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            this.handleResize();
+        });
+        
+        // Handle orientation change for mobile devices
+        window.addEventListener('orientationchange', () => {
+            setTimeout(() => {
+                this.handleResize();
+                this.adjustForOrientation();
+            }, 100);
+        });
+        
+        // Setup ResizeObserver for game board if supported
+        if (window.ResizeObserver) {
+            this.resizeObserver = new ResizeObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.target.classList.contains('game-board')) {
+                        this.adjustGameBoard(entry.target);
+                    } else if (entry.target.classList.contains('ending-content')) {
+                        this.adjustEndingContent(entry.target);
+                    }
+                });
+            });
+        }
+        
+        // Initial resize handling
+        this.handleResize();
+    }
+    
+    handleResize() {
+        const viewport = {
+            width: window.innerWidth,
+            height: window.innerHeight,
+            ratio: window.innerWidth / window.innerHeight
+        };
+        
+        // Update CSS custom properties for responsive calculations
+        document.documentElement.style.setProperty('--viewport-width', `${viewport.width}px`);
+        document.documentElement.style.setProperty('--viewport-height', `${viewport.height}px`);
+        document.documentElement.style.setProperty('--viewport-ratio', viewport.ratio.toString());
+        
+        // Adjust for different screen sizes
+        this.adjustForScreenSize(viewport);
+        
+        // Screen-specific adjustments
+        if (this.currentScreen === 'game') {
+            this.adjustGameScreen(viewport);
+        } else if (this.currentScreen === 'ending') {
+            this.adjustEndingScreen(viewport);
+        }
+    }
+    
+    adjustForScreenSize(viewport) {
+        // Determine screen size category
+        let sizeCategory = 'desktop';
+        if (viewport.width <= 575) {
+            sizeCategory = 'mobile';
+        } else if (viewport.width <= 767) {
+            sizeCategory = 'tablet';
+        } else if (viewport.width <= 991) {
+            sizeCategory = 'medium';
+        }
+        
+        // Add size class to body
+        document.body.className = document.body.className.replace(/screen-\w+/g, '');
+        document.body.classList.add(`screen-${sizeCategory}`);
+        
+        // Adjust font scaling for very small screens
+        if (viewport.width < 350 || viewport.height < 500) {
+            document.documentElement.style.setProperty('--font-scale', '0.85');
+        } else if (viewport.width < 400) {
+            document.documentElement.style.setProperty('--font-scale', '0.9');
+        } else {
+            document.documentElement.style.setProperty('--font-scale', '1');
+        }
+    }
+    
+    adjustForOrientation() {
+        const isLandscape = window.innerWidth > window.innerHeight;
+        const isMobile = window.innerWidth <= 767;
+        
+        if (isMobile && isLandscape) {
+            document.body.classList.add('landscape-mobile');
+            
+            // Adjust for mobile landscape specifically
+            if (this.currentScreen === 'game') {
+                this.optimizeGameForMobileLandscape();
+            }
+        } else {
+            document.body.classList.remove('landscape-mobile');
+        }
+    }
+    
+    adjustGameScreen(viewport) {
+        const gameBoard = document.querySelector('.game-board');
+        const numberGrid = document.querySelector('.number-grid');
+        
+        if (!gameBoard || !numberGrid) return;
+        
+        // Start observing if ResizeObserver is available
+        if (this.resizeObserver) {
+            this.resizeObserver.observe(gameBoard);
+        }
+        
+        this.adjustGameBoard(gameBoard);
+    }
+    
+    adjustGameBoard(gameBoard) {
+        const numberGrid = gameBoard.querySelector('.number-grid');
+        if (!numberGrid) return;
+        
+        const containerRect = gameBoard.getBoundingClientRect();
+        const availableWidth = containerRect.width - 32; // Account for padding
+        const availableHeight = containerRect.height - 100; // Account for instructions and padding
+        
+        // Get current grid dimensions
+        const computedStyle = window.getComputedStyle(numberGrid);
+        const gridColumns = parseInt(computedStyle.getPropertyValue('grid-template-columns').split(' ').length) || 4;
+        
+        // Calculate optimal button size
+        const gap = 8; // Gap between buttons
+        const buttonWidth = (availableWidth - (gap * (gridColumns - 1))) / gridColumns;
+        const maxButtonHeight = availableHeight / Math.ceil(15 / gridColumns) - gap;
+        
+        // Ensure buttons are not too small or too large
+        const minButtonSize = Math.max(35, Math.min(window.innerWidth, window.innerHeight) * 0.08);
+        const maxButtonSize = Math.min(80, Math.min(window.innerWidth, window.innerHeight) * 0.15);
+        
+        const buttonSize = Math.max(minButtonSize, Math.min(buttonWidth, maxButtonHeight, maxButtonSize));
+        
+        // Apply the calculated size
+        numberGrid.style.setProperty('--button-size', `${buttonSize}px`);
+        
+        // Adjust font size based on button size
+        const fontSize = Math.max(12, Math.min(24, buttonSize * 0.35));
+        numberGrid.style.setProperty('--button-font-size', `${fontSize}px`);
+        
+        // Update all number buttons
+        const numberButtons = numberGrid.querySelectorAll('.number-button');
+        numberButtons.forEach(button => {
+            button.style.minHeight = `${buttonSize}px`;
+            button.style.fontSize = `${fontSize}px`;
+        });
+    }
+    
+    adjustEndingScreen(viewport) {
+        const endingContent = document.querySelector('.ending-content');
+        if (!endingContent) return;
+        
+        if (this.resizeObserver) {
+            this.resizeObserver.observe(endingContent);
+        }
+        
+        this.adjustEndingContent(endingContent);
+    }
+    
+    adjustEndingContent(endingContent) {
+        const viewport = {
+            width: window.innerWidth,
+            height: window.innerHeight
+        };
+        
+        const maxWidth = Math.min(viewport.width * 0.9, 600);
+        const maxHeight = viewport.height * 0.85;
+        
+        endingContent.style.maxWidth = `${maxWidth}px`;
+        endingContent.style.maxHeight = `${maxHeight}px`;
+        
+        // Check if content overflows and enable scrolling
+        if (endingContent.scrollHeight > endingContent.clientHeight) {
+            endingContent.style.overflowY = 'auto';
+        }
+    }
+    
+    optimizeGameForMobileLandscape() {
+        // Specific optimizations for mobile landscape mode
+        const gameContent = document.querySelector('.game-content');
+        const characterPanel = document.querySelector('.character-panel');
+        
+        if (gameContent) {
+            gameContent.style.flexDirection = 'row';
+        }
+        
+        if (characterPanel) {
+            characterPanel.style.width = '100px';
+            characterPanel.style.minWidth = '100px';
+        }
     }
     
     setGameData(data) {

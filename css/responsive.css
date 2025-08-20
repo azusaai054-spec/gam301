@@ -69,24 +69,25 @@
     .number-grid {
         width: 100% !important;
         height: 100% !important;
-        min-height: 300px !important;
-        max-height: 400px !important;
+        flex: 1 !important;
+        min-height: 0 !important;
         gap: 0.2rem !important;
         padding: 0.5rem !important;
         display: grid !important;
         place-items: stretch !important;
-        overflow: visible !important;
+        overflow: hidden !important;
     }
     
     .number-button {
-        font-size: 1.4rem !important;
-        min-height: 45px !important;
+        font-size: clamp(1rem, 4vw, 1.4rem) !important;
+        min-height: 40px !important;
         width: 100% !important;
         height: 100% !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
         box-sizing: border-box !important;
+        aspect-ratio: 1 !important;
     }
     
     .hud-panel {
@@ -121,6 +122,10 @@
     .ending-content {
         padding: 1.5rem !important;
         margin: 1rem !important;
+        max-width: 95vw !important;
+        max-height: 85vh !important;
+        overflow-y: auto !important;
+        box-sizing: border-box !important;
     }
     
     .ending-title {
@@ -158,9 +163,10 @@
     }
     
     .number-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1rem;
-        min-height: 250px;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 0.8rem !important;
+        flex: 1 !important;
+        min-height: 0 !important;
     }
     
     .number-button {
@@ -202,9 +208,10 @@
     }
     
     .number-grid {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 1rem;
-        min-height: 280px;
+        grid-template-columns: repeat(5, 1fr) !important;
+        gap: 1rem !important;
+        flex: 1 !important;
+        min-height: 0 !important;
     }
     
     .number-button {
@@ -256,9 +263,10 @@
     }
     
     .number-grid {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 1.5rem;
-        min-height: 350px;
+        grid-template-columns: repeat(5, 1fr) !important;
+        gap: 1.5rem !important;
+        flex: 1 !important;
+        min-height: 0 !important;
     }
     
     .number-button {
@@ -330,7 +338,9 @@
     }
     
     .number-grid {
-        min-height: calc(100vh - 150px) !important;
+        flex: 1 !important;
+        min-height: 0 !important;
+        height: 100% !important;
     }
     
     .number-button {
@@ -349,9 +359,11 @@
     }
     
     .ending-content {
-        max-height: 90vh;
-        overflow-y: auto;
+        max-height: 85vh !important;
+        max-width: 95vw !important;
+        overflow-y: auto !important;
         padding: 1.5rem !important;
+        box-sizing: border-box !important;
     }
     
     .title-content {
@@ -533,7 +545,7 @@
         flex: 1 !important;
         width: 100% !important;
         height: 100% !important;
-        min-height: calc(100vh - 200px) !important;
+        min-height: 0 !important;
         display: grid !important;
         place-items: stretch !important;
     }
