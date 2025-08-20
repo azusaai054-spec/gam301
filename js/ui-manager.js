@@ -208,29 +208,39 @@ class UIManager {
         const computedStyle = window.getComputedStyle(numberGrid);
         const gridColumns = parseInt(computedStyle.getPropertyValue('grid-template-columns').split(' ').length) || 4;
         
-        // Calculate optimal button size
+        // Calculate optimal square button size
         const gap = 8; // Gap between buttons
         const buttonWidth = (availableWidth - (gap * (gridColumns - 1))) / gridColumns;
         const maxButtonHeight = availableHeight / Math.ceil(15 / gridColumns) - gap;
         
-        // Ensure buttons are not too small or too large
+        // Force square buttons - use the smaller of width/height constraints
+        const maxSquareSize = Math.min(buttonWidth, maxButtonHeight);
+        
+        // Ensure buttons are not too small or too large, but always square
         const minButtonSize = Math.max(35, Math.min(window.innerWidth, window.innerHeight) * 0.08);
         const maxButtonSize = Math.min(80, Math.min(window.innerWidth, window.innerHeight) * 0.15);
         
-        const buttonSize = Math.max(minButtonSize, Math.min(buttonWidth, maxButtonHeight, maxButtonSize));
+        const buttonSize = Math.max(minButtonSize, Math.min(maxSquareSize, maxButtonSize));
         
-        // Apply the calculated size
+        // Apply the calculated square size
         numberGrid.style.setProperty('--button-size', `${buttonSize}px`);
         
         // Adjust font size based on button size
         const fontSize = Math.max(12, Math.min(24, buttonSize * 0.35));
         numberGrid.style.setProperty('--button-font-size', `${fontSize}px`);
         
-        // Update all number buttons
+        // Update all number buttons to be perfect squares
         const numberButtons = numberGrid.querySelectorAll('.number-button');
         numberButtons.forEach(button => {
+            // Force exact square dimensions
+            button.style.width = `${buttonSize}px`;
+            button.style.height = `${buttonSize}px`;
+            button.style.minWidth = `${buttonSize}px`;
             button.style.minHeight = `${buttonSize}px`;
+            button.style.maxWidth = `${buttonSize}px`;
+            button.style.maxHeight = `${buttonSize}px`;
             button.style.fontSize = `${fontSize}px`;
+            button.style.aspectRatio = '1 / 1';
         });
     }
     

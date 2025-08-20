@@ -406,12 +406,16 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    aspect-ratio: 1;
+    aspect-ratio: 1 / 1;
     font-family: inherit;
+    width: var(--button-size, 40px);
+    height: var(--button-size, 40px);
+    min-width: var(--button-size, 40px);
     min-height: var(--button-size, 40px);
-    width: 100%;
-    height: 100%;
+    max-width: var(--button-size, 40px);
+    max-height: var(--button-size, 40px);
     box-sizing: border-box;
+    position: relative;
 }
 
 .number-button:hover {
